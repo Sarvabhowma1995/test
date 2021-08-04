@@ -37,3 +37,8 @@ variable "publicRTname" {
   type = string
   default = "SarvaPublicRT"
 }
+
+variable "privateRTname" {
+  type = string
+  default = "SarvaPrivateRT"
+}
