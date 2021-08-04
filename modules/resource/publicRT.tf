@@ -1,11 +1,11 @@
 resource "aws_route_table" "publicRT" {
-    vpc_id = var.aws_vpc.firstvpc.id
+    vpc_id = aws_vpc.firstvpc.id
     route {
         cidr_block = var.publicsubnetid
-        gateway_id = var.aws_internet_gateway.IGW.id
+        gateway_id = aws_internet_gateway.gw.id
     }
 
-	tags {
+	tags = {
 		Name = var.publicRTname
 	}
 }
