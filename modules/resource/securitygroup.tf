@@ -13,6 +13,14 @@ resource "aws_security_group" "dynamicsg" {
     }
   }
 
+  ingress {
+    description      = "TLS from globe"
+    from_port        = 30000
+    to_port          = 32767
+    protocol         = "tcp"
+    cidr_blocks      = [var.PublicRouteCIDR]
+  }
+
   egress {
     from_port        = 0
     to_port          = 0
