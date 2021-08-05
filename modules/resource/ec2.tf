@@ -23,7 +23,7 @@ resource "aws_instance" "masterinstance" {
    ami = data.aws_ami.rhel.id
    instance_type = var.instance_type
    count = 3
-   key_name = mumbai
+   key_name = "mumbai"
 
    tags = {
     Name = "Kubernetes"
