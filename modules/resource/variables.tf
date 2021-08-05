@@ -51,7 +51,7 @@ variable "PublicRouteCIDR" {
 variable "kubernetes_sg_ports" {
   type        = list(number)
   description = "list of ingress ports"
-  default     = [22, 6443, 2379, 2380, 10250, 10251, 10252, 30000-32767]
+  default     = [22, 6443, 2379, 2380, 10250, 10251, 10252]
 }
 
 variable "instance_type" {
