@@ -1,25 +1,22 @@
 resource "aws_security_group" "dynamicsg" {
-  name        = "dynamic-sg"
+  name        = "Kubernetes-SG"
   description = "Kubernetes Security Group"
 
-  dynamic "ingress" {  ## dynamic block with iterator.
+  dynamic "ingress" {
     for_each = var.kubernetes_sg_ports
     iterator = port
     content {
       from_port   = port.value
       to_port     = port.value
       protocol    = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
+      cidr_blocks = [var.PublicRouteCIDR]
     }
   }
 
-  dynamic "egress" {  ## Dynamic block without iterator.
-    for_each = var.sg_ports
-    content {
-      from_port   = egress.value
-      to_port     = egress.value
-      protocol    = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
-    }
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = [var.PublicRouteCIDR]
   }
 }
