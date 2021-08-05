@@ -42,3 +42,14 @@ variable "privateRTname" {
   type = string
   default = "SarvaPrivateRT"
 }
+
+variable "PublicRouteCIDR" {
+  type = string
+  default = "0.0.0.0/0"
+}
+
+variable "kubernetes_sg_ports" {
+  type        = list(number)
+  description = "list of ingress ports"
+  default     = [22, 80]
+}
